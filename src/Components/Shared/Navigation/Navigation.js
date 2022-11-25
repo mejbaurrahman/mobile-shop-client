@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 export default function Navigation() {
+  const {user,loading, logOut} = useContext(AuthContext);
   return (
     <div>
         <div className="navbar bg-base-100">
@@ -13,18 +15,28 @@ export default function Navigation() {
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <li><Link to='/'>Home</Link></li>
         <li><Link to='/products'>Products</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/signup'>Sign Up</Link></li>
+        {
+          !loading && user?.uid ? <>
+          {/* <li>{user?.displayName}</li> */}
+          <li><Link to='/dashbord'>Dashbord</Link></li>
+          <button className='btn btn-ghost' onClick={logOut}>Logout</button>
+          </>: <li><Link to='/login'>Login</Link></li>
+        }
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <a className="btn btn-ghost normal-case text-xl"><span className='text-2xl font-bold text-primary'>M</span>Shop</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
     <li><Link to='/'>Home</Link></li>
         <li><Link to='/products'>Products</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/signup'>Sign Up</Link></li>
+        {
+          !loading && user?.uid ? <>
+          {/* <li>{user?.displayName}</li> */}
+          <li><Link to='/dashbord'>Dashbord</Link></li>
+          <button className='btn btn-ghost' onClick={logOut}>Logout</button>
+          </>: <li><Link to='/login'>Login</Link></li>
+        }
     </ul>
   </div>
   <div className="flex-none gap-2">
@@ -34,15 +46,19 @@ export default function Navigation() {
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img src="https://placeimg.com/80/80/people" />
+          {
+            !loading && user?.uid && <img src={user?.photoURL}/>
+          }
         </div>
       </label>
       <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
         <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
+          {
+            !loading && user?.uid && <a className="justify-between">
+            {user?.displayName}
+            
           </a>
+          }
         </li>
         <li><a>Settings</a></li>
         <li><a>Logout</a></li>
