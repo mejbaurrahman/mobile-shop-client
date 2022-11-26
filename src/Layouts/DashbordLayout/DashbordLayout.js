@@ -40,10 +40,13 @@ export default function DashboardLayout() {
         <Link to='/dashbord/allbuyers'>All Buyers</Link>
       </li>
         <li>
-        <Link to='/dashbord/allsellers'>All Sellers</Link>
+        <Link to='/dashbord/allseller'>All Sellers</Link>
       </li>
         <li>
-        <Link to='/dashbord/allsellers'>Reported Items</Link>
+        <Link to='/dashbord/reporteditems'>Reported Items</Link>
+      </li>
+        <li>
+        <Link to='/dashbord/categoryadd'>Add Category</Link>
       </li>
       </>
         }
@@ -56,7 +59,7 @@ export default function DashboardLayout() {
             <Link to='/dashbord/addproduct'>Add A Product</Link>
           </li>
             <li>
-            <Link to='/dashbord/addproduct'>My Buyers</Link>
+            <Link to='/dashbord/mybuyers'>My Buyers</Link>
           </li>
           </>
         }
