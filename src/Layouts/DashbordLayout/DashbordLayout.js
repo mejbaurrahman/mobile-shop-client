@@ -12,8 +12,6 @@ export default function DashboardLayout() {
   const [isAdmin, isAdminLoading] = useAdmin(user?.email)
   const [isSeller, isSellerLoading] = useSeller(user?.email)
   const [isBuyer, isBuyerLoading] = useBuyer(user?.email)
-
-  console.log(isSeller)
   return (
     <div>
         <Navigation></Navigation>
