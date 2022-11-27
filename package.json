@@ -11,11 +11,14 @@
     "date-fns": "^2.29.3",
     "firebase": "^9.14.0",
     "react": "^18.2.0",
+    "react-card-slider-component": "^1.0.9",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.5",
     "react-hot-toast": "^2.4.0",
+    "react-image-gallery": "^1.2.11",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "react-slideshow-image": "^4.0.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

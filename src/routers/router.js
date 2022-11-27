@@ -18,6 +18,7 @@ import AddAProduct from "../Pages/Dashbord/Seller/AddAProduct/AddAProduct";
 import MyBuyers from "../Pages/Dashbord/Seller/MyBuyers/MyBuyers";
 import CategoryAdd from "../Pages/Dashbord/Admin/CategoryAdd/CategoryAdd";
 import ProductDetail from "../Pages/ProductDetail/ProductDetail";
+import ProductsByCategory from "../Pages/ProductsByCtegory/ProductsByCategory";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -42,6 +43,11 @@ export const router = createBrowserRouter([
                 path:'/product/:id',
                 loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
                 element:<ProductDetail></ProductDetail>
+            },
+            {
+                path:'/category/:id',
+                loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`),
+                element:<ProductsByCategory></ProductsByCategory>
             },
 
         ]
