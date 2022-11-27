@@ -4,6 +4,7 @@ import BookNowModal from './BookNowModal/BookNowModal';
 
 export default function ProductDetail() {
     const loader = useLoaderData();
+   
     const [seller, setSeller] = useState({})
     const {_id, productName, resalePrice, orginalPrice, description, image, postedTime, sellerEmail, usageYear} = loader;
 
@@ -46,7 +47,9 @@ export default function ProductDetail() {
   </div>
 </div>
         </div>
-      <BookNowModal></BookNowModal>
+      <BookNowModal
+      product={loader}
+      ></BookNowModal>
     </div>
   )
 }
