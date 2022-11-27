@@ -78,7 +78,7 @@ export default function MyProducts() {
       key={product._id}
       className="hover">
       <td>{i+1}</td>
-      <td><img src={product.image} alt="" className='w-3/4 rounded-full'/></td>
+      <td><img src={product.image} alt="" className='w-3/4 rounded'/></td>
       <td>{product.productName}</td>
       <td>{product.postedTime}</td>
       <td>{product?.status === 'sold'? 'Sold': 'Available'}</td>

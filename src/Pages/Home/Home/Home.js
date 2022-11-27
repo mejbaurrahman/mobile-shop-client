@@ -1,7 +1,10 @@
 import React from 'react'
+import AdvertiseItems from '../AdvertiseItems/AdvertiseItems'
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <AdvertiseItems></AdvertiseItems>
+    </div>
   )
 }

@@ -77,7 +77,7 @@ export default function SignUp() {
     .then(res=>res.json())
     .then(data=>{
       // console.log(data);
-      toast.success('Saved in database succesfully')
+      // toast.success('Saved in database succesfully')
       setCreatedEmail(email)
     }).catch(error=>console.log(error.message))
   }
