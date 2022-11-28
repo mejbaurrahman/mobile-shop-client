@@ -33,7 +33,7 @@ export default function Navigation() {
     </div>
     <a className="btn btn-ghost normal-case text-xl"><span className='text-2xl font-bold text-primary'>M</span>Shop</a>
   </div>
-  <div className="navbar-center hidden lg:flex">
+  <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
     <li><Link to='/'>Home</Link></li>
         <li><Link to='/products'>Products</Link></li>
@@ -47,9 +47,6 @@ export default function Navigation() {
     </ul>
   </div>
   <div className="flex-none gap-2">
-    <div className="form-control">
-      <input type="text" placeholder="Search" className="input input-bordered" />
-    </div>
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
