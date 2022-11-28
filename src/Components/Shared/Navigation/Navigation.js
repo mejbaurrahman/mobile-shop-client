@@ -1,9 +1,16 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 export default function Navigation() {
+  const navigate = useNavigate();
   const {user,loading, logOut} = useContext(AuthContext);
+
+  const handleLogOut=()=>{
+    return logOut().then(res=>{
+      navigate('/login')
+    }).catch()
+  }
   return (
     <div>
         <div className="navbar bg-base-100">
@@ -19,7 +26,7 @@ export default function Navigation() {
           !loading && user?.uid ? <>
           {/* <li>{user?.displayName}</li> */}
           <li><Link to='/dashbord'>Dashbord</Link></li>
-          <button className='btn btn-ghost' onClick={logOut}>Logout</button>
+          <button className='btn btn-ghost' onClick={handleLogOut}>Logout</button>
           </>: <li><Link to='/login'>Login</Link></li>
         }
       </ul>
@@ -60,8 +67,6 @@ export default function Navigation() {
           </a>
           }
         </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
       </ul>
     </div>
     {

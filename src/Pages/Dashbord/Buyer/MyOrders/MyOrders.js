@@ -65,7 +65,7 @@ export default function MyOrders() {
     <td><img src={order.image} alt="" className='w-3/4 rounded'/></td>
     <td>{order.productName}</td>
     <td>{order.price}</td>
-    <td><Link to={`/dashbord/pay/${order._id}`}><button className='btn btn-success'>Pay</button></Link></td>
+    <td><Link to={`/dashbord/pay/${order._id}`}><button className='btn btn-success' disabled={order?.paid}>{order?.paid ? 'Paid': 'Pay'}</button></Link></td>
     <td><button onClick={()=>handleDelete(order._id)}  className='btn btn-error'>Delete</button></td>
   </tr>)
    }
