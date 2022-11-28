@@ -40,7 +40,7 @@ export default function CategorySelection() {
 
   
   return (
-    <div className='my-5'>
+    <div className='my-5' data-aos="fade-up">
          <div>
             <h1 className='text-5xl text-primary uppercase font-light'>Categories</h1>
             <div className="divider"></div>

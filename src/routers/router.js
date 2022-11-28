@@ -21,6 +21,8 @@ import ProductDetail from "../Pages/ProductDetail/ProductDetail";
 import ProductsByCategory from "../Pages/ProductsByCtegory/ProductsByCategory";
 import Payment from "../Pages/Dashbord/Payment/Payment";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import Products from "../Pages/Products/Products";
+import Blog from "../Pages/Blog/Blog";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
                 element:<Login></Login>
             },
             {
+                path:'/products',
+                element:<Products></Products>
+            },
+            {
+                path:'/blog',
+                element:<Blog></Blog>
+            },
+            {
                 path:'/signup',
                 element:<SignUp></SignUp>
             },
@@ -49,7 +59,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/category/:id',
-                loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`),
+                loader:({params})=>fetch(`http://localhost:5000/categories/${params.id}`),
                 element:<ProductsByCategory></ProductsByCategory>
             },
 

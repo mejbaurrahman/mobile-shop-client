@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react'
-import AddvertiseProduct from './AddvertiseProduct/AddvertiseProduct';
+import AddvertiseProduct from '../Home/AdvertiseItems/AddvertiseProduct/AddvertiseProduct';
 
-export default function AdvertiseItems() {
+
+export default function Products() {
     const [addvertisedProducts, setAddvertisedProducts] =useState([]);
     const [loadingProducts, setLoadingProducts] = useState(true);
 
@@ -17,7 +18,11 @@ export default function AdvertiseItems() {
 
     useEffect(()=>{
         setLoadingProducts(true)
-        fetch(`http://localhost:5000/addvertisedproducts`)
+        fetch(`http://localhost:5000/allproducts`,{
+            headers:{
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
         .then(res=>res.json())
         .then(data=>{
             setAddvertisedProducts(data);
@@ -25,9 +30,9 @@ export default function AdvertiseItems() {
     }, [addvertisedProducts])
   
   return (
-    <div className='my-6' >
+    <div className='my-6'>
         <div>
-            <h1 className='text-5xl text-primary uppercase font-light'>Addvertised Products</h1>
+            <h1 className='text-5xl text-primary uppercase font-light'>All Products</h1>
             <div className="divider"></div>
         </div>
         <div className='grid lg:grid-cols-3 grid-cols-1 gap-3'>

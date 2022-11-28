@@ -15,7 +15,7 @@ export default function AddvertiseProduct({addvertisedProduct, users}) {
   }, [verifyseller])
   return (
 
-    <div className=''>
+    <div className='' data-aos="fade-down">
         <div className="card w-full glass p-4">
   <figure><img src={image} className='w-1/2'/></figure>
   <div className="card-body">

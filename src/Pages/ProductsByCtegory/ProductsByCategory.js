@@ -1,10 +1,18 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 import AddvertiseProduct from '../Home/AdvertiseItems/AddvertiseProduct/AddvertiseProduct';
 
 export default function ProductsByCategory() {
     const loader= useLoaderData();
-    console.log(loader)
+    const {data:users=[],refetch, isLoading} = useQuery({
+        queryKey:['users'],
+        queryFn: async ()=>{
+          const res= await fetch(`http://localhost:5000/verifyuser`)
+          const data = await res.json();
+          return data;
+        }
+      })
   return (
     <div className='my-6'>
         <div>
@@ -16,6 +24,7 @@ export default function ProductsByCategory() {
                 loader?.result?.map((addvertisedProduct)=><AddvertiseProduct
                 key={addvertisedProduct._id}
                 addvertisedProduct={addvertisedProduct}
+                users = {users}
                 >
 
                 </AddvertiseProduct>)
