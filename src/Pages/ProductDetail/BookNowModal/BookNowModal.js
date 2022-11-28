@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider'
 import useBuyer from '../../../Hooks/useBuyer';
@@ -13,10 +15,41 @@ export default function BookNowModal({product}) {
   const [isBuyer, isBuyerLoading] = useBuyer(user?.email)
   // console.log(product)
   const handleBookNow =(e)=>{
-  e.preventDefault()
+
+  e.preventDefault();
+  setOpenModal(true);
   const form = e.target;
-  const name = form.productName.value;
-  console.log(name)
+  const productName = form.productName.value;
+  const buyerName = form.buyerName.value;
+  const price = form.price.value;
+  const buyerEmail = form.buyerEmail.value;
+  const mobile = form.mobile.value;
+  const location = form.location.value;
+  const category = form.category.value;
+
+  const bookingInfo = {
+    productName,
+    buyerName,
+    buyerEmail,
+    mobile,
+    location,
+    category,
+    price,
+    seller: product?.sellerEmail,
+    image: product?.image
+  }
+  console.log(bookingInfo)
+  axios.post('http://localhost:5000/orders', bookingInfo)
+  .then(function (response) {
+    if(response?.data?.insertedId && isBuyer){
+      
+      toast.success('Order Placed Successfully')
+      navigate('/dashbord/myorders')
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   }
   return (
     <div>

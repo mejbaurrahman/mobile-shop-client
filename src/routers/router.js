@@ -19,6 +19,7 @@ import MyBuyers from "../Pages/Dashbord/Seller/MyBuyers/MyBuyers";
 import CategoryAdd from "../Pages/Dashbord/Admin/CategoryAdd/CategoryAdd";
 import ProductDetail from "../Pages/ProductDetail/ProductDetail";
 import ProductsByCategory from "../Pages/ProductsByCtegory/ProductsByCategory";
+import Payment from "../Pages/Dashbord/Payment/Payment";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -67,6 +68,11 @@ export const router = createBrowserRouter([
             {
                 path:'/dashbord/wishlist',
                 element:<BuyerRoute><MyWishList></MyWishList></BuyerRoute>
+            },
+            {
+                path:'/dashbord/pay/:id',
+                loader:({params})=>fetch(`http://localhost:5000/orders/${params.id}`),
+                element:<BuyerRoute><Payment></Payment></BuyerRoute>
             },
             {
                 path:'/dashbord/allseller',
