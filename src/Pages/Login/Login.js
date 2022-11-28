@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useToken from '../../Hooks/useToken';
@@ -32,18 +33,33 @@ export default function Login() {
 
   }
 
-//   const handleGoogleLogin =()=>{
-//         googleLogin()
-//         .then(result=>{
-//           const user = result.user;
-//           console.log(user)
-//           navigate(from, {replace:true})
-//           // setLoginEmail(user?.email)
-//         }).catch((error)=>{
-//           console.log(error.message)
-//         })
-//   }
-
+  const handleGoogleLogin =()=>{
+        googleLogin()
+        .then(result=>{
+          const user = result.user;
+          
+          saveUser(user?.displayName, user?.email)
+          navigate(from, {replace:true})
+        }).catch((error)=>{
+          console.log(error.message)
+        })
+  }
+  const saveUser =(name, email)=>{
+    const userInfo = {name, email, role:'buyer'};
+    console.log(userInfo)
+    fetch(`http://localhost:5000/googleusers`,{
+      method:'POST',
+      headers:{
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(userInfo)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      setLoginEmail(email)
+      toast.success('Logged in Successfully')
+    }).catch(error=>console.log(error.message))
+  }
   return (
    <>
    {
@@ -89,10 +105,10 @@ export default function Login() {
     </form>
 
     <p>New to Mobile Shop <Link to='/signup' className='text-primary'>Create New Account</Link></p>
-    {/* <div className="divider">OR</div>
+    <div className="divider">OR</div>
     <div className='flex justify-center'>
     <button className='btn btn-accent btn-outline' onClick={handleGoogleLogin} >Continue with Google</button>
-    </div> */}
+    </div>
     </div>
   </div>
    }

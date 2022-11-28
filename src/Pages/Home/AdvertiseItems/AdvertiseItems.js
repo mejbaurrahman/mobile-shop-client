@@ -1,10 +1,20 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react'
 import AddvertiseProduct from './AddvertiseProduct/AddvertiseProduct';
 
 export default function AdvertiseItems() {
     const [addvertisedProducts, setAddvertisedProducts] =useState([]);
     const [loadingProducts, setLoadingProducts] = useState(true);
-    
+
+    const {data:users=[],refetch, isLoading} = useQuery({
+    queryKey:['users'],
+    queryFn: async ()=>{
+      const res= await fetch(`http://localhost:5000/verifyuser`)
+      const data = await res.json();
+      return data;
+    }
+  })
+
     useEffect(()=>{
         setLoadingProducts(true)
         fetch(`http://localhost:5000/addvertisedproducts`)
@@ -25,6 +35,7 @@ export default function AdvertiseItems() {
                 addvertisedProducts?.map((addvertisedProduct)=><AddvertiseProduct
                 key={addvertisedProduct._id}
                 addvertisedProduct={addvertisedProduct}
+                users = {users}
                 >
 
                 </AddvertiseProduct>)
