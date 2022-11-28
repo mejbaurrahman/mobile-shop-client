@@ -20,6 +20,7 @@ import CategoryAdd from "../Pages/Dashbord/Admin/CategoryAdd/CategoryAdd";
 import ProductDetail from "../Pages/ProductDetail/ProductDetail";
 import ProductsByCategory from "../Pages/ProductsByCtegory/ProductsByCategory";
 import Payment from "../Pages/Dashbord/Payment/Payment";
+import ErrorPage from "../Components/ErrorPage/ErrorPage";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
     {
         path:'/',
         element:<Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/',

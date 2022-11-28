@@ -36,7 +36,8 @@ export default function BookNowModal({product}) {
     category,
     price,
     seller: product?.sellerEmail,
-    image: product?.image
+    image: product?.image,
+    productId: product?._id
   }
   console.log(bookingInfo)
   axios.post('http://localhost:5000/orders', bookingInfo)
