@@ -47,7 +47,7 @@ export default function Login() {
   const saveUser =(name, email)=>{
     const userInfo = {name, email, role:'buyer'};
     console.log(userInfo)
-    fetch(`http://localhost:5000/googleusers`,{
+    fetch(`https://mobileshop-inky.vercel.app/googleusers`,{
       method:'POST',
       headers:{
         'content-type': 'application/json'

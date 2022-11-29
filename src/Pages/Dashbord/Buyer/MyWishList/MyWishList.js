@@ -10,7 +10,7 @@ export default function MyWishList() {
   const {data: wishproducts=[],refetch, isLoading} = useQuery({
     queryKey:['wishproducts'],
     queryFn: async ()=>{
-      const res= await fetch(`http://localhost:5000/wishproducts?email=${user?.email}`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/wishproducts?email=${user?.email}`)
       const data = await res.json();
       return data;
     }
@@ -20,7 +20,7 @@ export default function MyWishList() {
     const confirm = window.confirm('Are you want to delete? ');
     if(confirm)
      {
-      fetch(`http://localhost:5000/wishproducts/${id}`, {
+      fetch(`https://mobileshop-inky.vercel.app/wishproducts/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type':'application/json',

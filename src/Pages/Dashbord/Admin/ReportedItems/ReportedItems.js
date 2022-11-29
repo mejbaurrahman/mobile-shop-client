@@ -9,7 +9,7 @@ export default function ReportedItems() {
   const {data: loader=[],refetch, isLoading} = useQuery({
     queryKey:['loader'],
     queryFn: async ()=>{
-      const res= await fetch(`http://localhost:5000/reportproducts`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/reportproducts`)
       const data = await res.json();
       return data;
     }
@@ -18,7 +18,7 @@ export default function ReportedItems() {
     const confirm = window.confirm('Are you want to delete? ');
     if(confirm)
      {
-      fetch(`http://localhost:5000/reportproducts/${id}`, {
+      fetch(`https://mobileshop-inky.vercel.app/reportproducts/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type':'application/json',

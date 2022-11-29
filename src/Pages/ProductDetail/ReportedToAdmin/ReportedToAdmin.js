@@ -38,7 +38,7 @@ export default function ReportedToAdmin({product}) {
     productId: product?._id
   }
  
-  axios.post('http://localhost:5000/reportproducts', reportDetail)
+  axios.post('https://mobileshop-inky.vercel.app/reportproducts', reportDetail)
   .then(function (response) {
     if(response?.data?.insertedId && isBuyer){
       

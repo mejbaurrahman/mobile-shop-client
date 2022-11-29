@@ -6,7 +6,7 @@ export default function MyBuyers() {
   const [buyers, setBuyers] = useState([])
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/buyers?email=${user?.email}`)
+    fetch(`https://mobileshop-inky.vercel.app/buyers?email=${user?.email}`)
     .then(res=>res.json())
     .then(data=>{
       setBuyers(data)

@@ -36,7 +36,7 @@ export default function SignUp() {
       const image = data.image[0];
         const formData = new FormData()
         formData.append('image', image);
-        fetch(`https://api.imgbb.com/1/upload?expiration=600&key=${process.env.REACT_APP_img_bb_key}`,{
+        fetch(`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_img_bb_key}`,{
             method:'POST',
             body:formData
           }).then(res=>res.json())
@@ -67,7 +67,7 @@ export default function SignUp() {
 
   const saveUser =(name, email, role)=>{
     const user = {name, email, role};
-    fetch(`http://localhost:5000/users`,{
+    fetch(`https://mobileshop-inky.vercel.app/users`,{
       method:'POST',
       headers:{
         'content-type': 'application/json'

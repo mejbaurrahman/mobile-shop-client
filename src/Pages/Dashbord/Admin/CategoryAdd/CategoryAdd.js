@@ -16,7 +16,7 @@ export default function CategoryAdd() {
               category: data.name,
             }
 
-            fetch(`http://localhost:5000/categories`,{
+            fetch(`https://mobileshop-inky.vercel.app/categories`,{
               method: 'POST',
               headers:{
                 'content-type': 'application/json',

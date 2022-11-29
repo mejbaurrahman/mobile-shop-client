@@ -9,7 +9,7 @@ export default function AdvertiseItems() {
     const {data:users=[],refetch, isLoading} = useQuery({
     queryKey:['users'],
     queryFn: async ()=>{
-      const res= await fetch(`http://localhost:5000/verifyuser`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/verifyuser`)
       const data = await res.json();
       return data;
     }
@@ -17,7 +17,7 @@ export default function AdvertiseItems() {
 
     useEffect(()=>{
         setLoadingProducts(true)
-        fetch(`http://localhost:5000/addvertisedproducts`)
+        fetch(`https://mobileshop-inky.vercel.app/addvertisedproducts`)
         .then(res=>res.json())
         .then(data=>{
             setAddvertisedProducts(data);

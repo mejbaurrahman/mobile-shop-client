@@ -7,7 +7,7 @@ export default function AllBuyers() {
   const {data:buyers=[],refetch, isLoading} = useQuery({
     queryKey:['buyers'],
     queryFn: async ()=>{
-      const res= await fetch(`http://localhost:5000/rolebuyers`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/rolebuyers`)
       const data = await res.json();
       return data;
     }
@@ -18,7 +18,7 @@ export default function AllBuyers() {
     const confirm = window.confirm('Are you want to delete? ');
     if(confirm)
      {
-      fetch(`http://localhost:5000/buyers/${id}`, {
+      fetch(`https://mobileshop-inky.vercel.app/buyers/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type':'application/json',

@@ -32,7 +32,7 @@ export default function Navigation() {
         }
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl"><span className='text-2xl font-bold text-primary'>M</span>Shop</a>
+    <a className="btn btn-ghost normal-case text-4xl"><span className='text-4xl font-bold text-primary'>M</span>Shop</a>
   </div>
   <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
@@ -49,7 +49,8 @@ export default function Navigation() {
     </ul>
   </div>
   <div className="flex-none gap-2">
-    <div className="dropdown dropdown-end">
+    {
+      !loading && user?.uid &&    <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           {
@@ -68,6 +69,7 @@ export default function Navigation() {
         </li>
       </ul>
     </div>
+    }
     {
     window.location.pathname === '/dashbord' && <label htmlFor="dashbord-drawer" tabIndex={0} className="btn btn-ghost lg:hidden ml-auto">
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>

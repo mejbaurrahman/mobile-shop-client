@@ -21,7 +21,7 @@ export default function ProductDetail() {
     const {data,refetch, isLoading} = useQuery({
       queryKey:['users'],
       queryFn: async ()=>{
-        const res= await fetch(`http://localhost:5000/vseller?email=${sellerEmail}`)
+        const res= await fetch(`https://mobileshop-inky.vercel.app/vseller?email=${sellerEmail}`)
         const data = await res.json();
         return data;
       }
@@ -41,7 +41,7 @@ export default function ProductDetail() {
           productId: _id,
           wishProduct: true
         }
-        axios.post('http://localhost:5000/wishproducts', wishProductInfo)
+        axios.post('https://mobileshop-inky.vercel.app/wishproducts', wishProductInfo)
     .then(function (response) {
       if(response?.data?.insertedId){
         
@@ -60,7 +60,7 @@ export default function ProductDetail() {
     }
 
   return (
-    <div>
+    <div className='md:container mx-auto'>
         <div>
             <h1 className='text-5xl text-primary uppercase font-thin'>{productName}</h1>
             <div className="divider"></div>

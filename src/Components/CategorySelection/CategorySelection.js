@@ -13,7 +13,7 @@ export default function CategorySelection() {
   const {data: categories=[], isLoading} = useQuery({
     queryKey:['categories'],
     queryFn: async ()=>{
-      const res= await fetch(`http://localhost:5000/categories`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/categories`)
       const data = await res.json();
       return data;
     }
@@ -23,7 +23,7 @@ export default function CategorySelection() {
     navigate(`product/${id}`)
   }
   useEffect(()=>{
-    fetch(`http://localhost:5000/allproducts`)
+    fetch(`https://mobileshop-inky.vercel.app/allproducts`)
     .then(res=>res.json())
     .then(data=>{
       data.forEach(product=>{

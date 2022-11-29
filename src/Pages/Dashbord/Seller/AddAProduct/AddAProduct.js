@@ -16,7 +16,7 @@ export default function AddAProduct() {
     const {data: categories=[], isLoading} = useQuery({
       queryKey:['categories'],
       queryFn: async ()=>{
-        const res= await fetch(`http://localhost:5000/categories`)
+        const res= await fetch(`https://mobileshop-inky.vercel.app/categories`)
         const data = await res.json();
         return data;
       }
@@ -29,7 +29,7 @@ export default function AddAProduct() {
         const image = data.image[0];
         const formData = new FormData()
         formData.append('image', image);
-        fetch(`https://api.imgbb.com/1/upload?expiration=600&key=${process.env.REACT_APP_img_bb_key}`,{
+        fetch(`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_img_bb_key}`,{
           method:'POST',
           body:formData
         }).then(res=>res.json())
@@ -52,7 +52,7 @@ export default function AddAProduct() {
               sellerName:user?.displayName,
               postedTime:time
             };
-            fetch(`http://localhost:5000/products`,{
+            fetch(`https://mobileshop-inky.vercel.app/products`,{
               method: 'POST',
               headers:{
                 'content-type': 'application/json',

@@ -7,7 +7,7 @@ export default function AllSeller() {
   const {data:sellers=[],refetch, isLoading} = useQuery({
     queryKey:['sellers'],
     queryFn: async ()=>{
-      const res= await fetch(`http://localhost:5000/sellers`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/sellers`)
       const data = await res.json();
       return data;
     }
@@ -15,7 +15,7 @@ export default function AllSeller() {
 
   const handleVerfiyed =(id, email, name)=>{
     console.log('INIININI')
-    fetch(`http://localhost:5000/sellers?email=${email}`,{
+    fetch(`https://mobileshop-inky.vercel.app/sellers?email=${email}`,{
       method: 'PUT',
       headers: {
           'content-type':'application/json',
@@ -27,7 +27,7 @@ export default function AllSeller() {
           if (data.acknowledged) {
             console.log(data)
             
-            fetch(`http://localhost:5000/sellers/${id}`,{
+            fetch(`https://mobileshop-inky.vercel.app/sellers/${id}`,{
               method: 'PUT',
                 headers: {
                 'content-type':'application/json',
@@ -49,7 +49,7 @@ export default function AllSeller() {
     const confirm = window.confirm('Are you want to delete? ');
     if(confirm)
      {
-      fetch(`http://localhost:5000/sellers/${id}`, {
+      fetch(`https://mobileshop-inky.vercel.app/sellers/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type':'application/json',

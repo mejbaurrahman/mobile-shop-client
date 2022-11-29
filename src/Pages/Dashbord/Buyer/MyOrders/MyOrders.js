@@ -10,7 +10,7 @@ export default function MyOrders() {
   const {data: orders=[],refetch, isLoading} = useQuery({
     queryKey:['orders'],
     queryFn: async ()=>{
-      const res= await fetch(`http://localhost:5000/orders?email=${user?.email}`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/orders?email=${user?.email}`)
       const data = await res.json();
       return data;
     }
@@ -20,7 +20,7 @@ export default function MyOrders() {
     const confirm = window.confirm('Are you want to delete? ');
     if(confirm)
      {
-      fetch(`http://localhost:5000/orders/${id}`, {
+      fetch(`https://mobileshop-inky.vercel.app/orders/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type':'application/json',

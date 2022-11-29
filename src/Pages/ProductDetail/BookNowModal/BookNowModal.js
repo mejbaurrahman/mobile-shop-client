@@ -40,7 +40,7 @@ export default function BookNowModal({product}) {
     productId: product?._id
   }
   console.log(bookingInfo)
-  axios.post('http://localhost:5000/orders', bookingInfo)
+  axios.post('https://mobileshop-inky.vercel.app/orders', bookingInfo)
   .then(function (response) {
     if(response?.data?.insertedId && isBuyer){
       

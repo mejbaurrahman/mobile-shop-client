@@ -10,14 +10,14 @@ export default function MyProducts() {
   const {data: products=[],refetch, isLoading} = useQuery({
     queryKey:['products'],
     queryFn: async ()=>{
-      const res= await fetch(`http://localhost:5000/products?email=${user?.email}`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/products?email=${user?.email}`)
       const data = await res.json();
       return data;
     }
   })
 
  const handleAdvertise =(product, id)=>{
-      fetch(`http://localhost:5000/products/${id}`,{
+      fetch(`https://mobileshop-inky.vercel.app/products/${id}`,{
         method:'PATCH',
         headers:{
           'content-type':'application/json'
@@ -35,7 +35,7 @@ export default function MyProducts() {
   const confirm = window.confirm('Are you want to delete? ');
   if(confirm)
    {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://mobileshop-inky.vercel.app/products/${id}`, {
               method: 'DELETE',
               headers: {
                   'content-type':'application/json',

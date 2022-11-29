@@ -17,7 +17,7 @@ export default function CheckoutForm({booking}) {
     const navigate = useNavigate();
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://mobileshop-inky.vercel.app/create-payment-intent", {
           method: "POST",
           headers: {
              "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export default function CheckoutForm({booking}) {
                 transactionId: paymentIntent.id,
                 seller:booking?.seller
             }
-            axios.post('http://localhost:5000/paymentcollections', payment)
+            axios.post('https://mobileshop-inky.vercel.app/paymentcollections', payment)
             .then(function (response) {
                 if(response?.data?.insertedId ){
                 

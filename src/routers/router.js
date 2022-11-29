@@ -54,12 +54,12 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/product/:id',
-                loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
+                loader:({params})=>fetch(`https://mobileshop-inky.vercel.app/product/${params.id}`),
                 element:<ProductDetail></ProductDetail>
             },
             {
                 path:'/category/:id',
-                loader:({params})=>fetch(`http://localhost:5000/categories/${params.id}`),
+                loader:({params})=>fetch(`https://mobileshop-inky.vercel.app/categories/${params.id}`),
                 element:<ProductsByCategory></ProductsByCategory>
             },
 
@@ -83,7 +83,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/dashbord/pay/:id',
-                loader:({params})=>fetch(`http://localhost:5000/orders/${params.id}`),
+                loader:({params})=>fetch(`https://mobileshop-inky.vercel.app/orders/${params.id}`),
                 element:<BuyerRoute><Payment></Payment></BuyerRoute>
             },
             {
