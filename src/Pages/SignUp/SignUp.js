@@ -126,6 +126,7 @@ export default function SignUp() {
         <option disabled selected>User Role</option>
         <option  value='buyer'>Buyer</option>
         <option  value='seller'>Seller</option>
+        <option  value='admin'>Admin</option>
        
       </select>
        
