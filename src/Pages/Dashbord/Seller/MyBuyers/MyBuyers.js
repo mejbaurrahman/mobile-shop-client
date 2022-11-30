@@ -6,7 +6,11 @@ export default function MyBuyers() {
   const [buyers, setBuyers] = useState([])
 
   useEffect(()=>{
-    fetch(`https://mobileshop-inky.vercel.app/buyers?email=${user?.email}`)
+    fetch(`https://mobileshop-inky.vercel.app/mybuyers?email=${user?.email}`,{
+      headers: {
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
+    }
+    })
     .then(res=>res.json())
     .then(data=>{
       setBuyers(data)
@@ -17,7 +21,7 @@ export default function MyBuyers() {
   return (
     <div>
     <div>
-      <h1 className='text-3xl text-primary uppercase text-left'>My orders</h1>
+      <h1 className='text-3xl text-primary uppercase text-left'>My Buyers</h1>
       <div className="divider"></div> 
     </div>
     <div>

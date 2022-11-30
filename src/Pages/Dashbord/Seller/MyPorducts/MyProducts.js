@@ -20,7 +20,8 @@ export default function MyProducts() {
       fetch(`https://mobileshop-inky.vercel.app/products/${id}`,{
         method:'PATCH',
         headers:{
-          'content-type':'application/json'
+          'content-type':'application/json',
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
         },
         body:JSON.stringify({status:'advertised'})
       }).then(res=>res.json())

@@ -10,7 +10,11 @@ export default function MyOrders() {
   const {data: orders=[],refetch, isLoading} = useQuery({
     queryKey:['orders'],
     queryFn: async ()=>{
-      const res= await fetch(`https://mobileshop-inky.vercel.app/orders?email=${user?.email}`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/myorders?email=${user?.email}`,{
+        headers: {
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
+      })
       const data = await res.json();
       return data;
     }

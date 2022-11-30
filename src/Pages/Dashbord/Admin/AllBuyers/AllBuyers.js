@@ -7,7 +7,11 @@ export default function AllBuyers() {
   const {data:buyers=[],refetch, isLoading} = useQuery({
     queryKey:['buyers'],
     queryFn: async ()=>{
-      const res= await fetch(`https://mobileshop-inky.vercel.app/rolebuyers`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/buyers`,{
+        headers: {
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
+      })
       const data = await res.json();
       return data;
     }

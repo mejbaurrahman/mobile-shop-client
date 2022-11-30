@@ -7,7 +7,12 @@ export default function AllSeller() {
   const {data:sellers=[],refetch, isLoading} = useQuery({
     queryKey:['sellers'],
     queryFn: async ()=>{
-      const res= await fetch(`https://mobileshop-inky.vercel.app/sellers`)
+      const res= await fetch(`https://mobileshop-inky.vercel.app/sellers`,
+      {
+        headers: {
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
+      })
       const data = await res.json();
       return data;
     }
