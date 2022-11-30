@@ -8,7 +8,8 @@ import useToken from '../../Hooks/useToken';
 
 export default function Login() {
   const { register,formState: { errors }, handleSubmit } = useForm();
-  const {user, login, loading, googleLogin} = useContext(AuthContext);
+  const {user, login, loading, setLoading, googleLogin} = useContext(AuthContext);
+  const [errorShow, setErrorShow] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
   const [loginEmail, setLoginEmail] = useState('');
@@ -20,6 +21,7 @@ export default function Login() {
   }
   const handleLogin = data => {
     // console.log(data);
+    setErrorShow('')
     login(data.email, data.password)
     .then(result=>{
       const user = result.user;
@@ -27,13 +29,15 @@ export default function Login() {
       setLoginEmail(data.email);
       
     }).catch((error)=>{
-      console.log(error.message)
+      setErrorShow(error.message)
+      setLoading(false)
     })
 
 
   }
 
   const handleGoogleLogin =()=>{
+        setErrorShow('')
         googleLogin()
         .then(result=>{
           const user = result.user;
@@ -41,10 +45,11 @@ export default function Login() {
           saveUser(user?.displayName, user?.email)
           navigate(from, {replace:true})
         }).catch((error)=>{
-          console.log(error.message)
+          setErrorShow(error.message)
         })
   }
   const saveUser =(name, email)=>{
+    setErrorShow('')
     const userInfo = {name, email, role:'buyer'};
     console.log(userInfo)
     fetch(`https://mobileshop-inky.vercel.app/googleusers`,{
@@ -58,7 +63,9 @@ export default function Login() {
     .then(data=>{
       setLoginEmail(email)
       toast.success('Logged in Successfully')
-    }).catch(error=>console.log(error.message))
+    }).catch(error=>{setErrorShow(error.message)
+    setLoading(false)
+    })
   }
   return (
    <>
@@ -103,7 +110,9 @@ export default function Login() {
    
     <input type="submit" value="Login" className='btn btn-accent w-full' />
     </form>
-
+    {
+        errorShow && <p className='text-red-600'>{errorShow}</p>
+      }
     <p>New to Mobile Shop <Link to='/signup' className='text-primary'>Create New Account</Link></p>
     <div className="divider">OR</div>
     <div className='flex justify-center'>

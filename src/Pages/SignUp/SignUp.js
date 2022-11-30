@@ -8,6 +8,7 @@ import useToken from '../../Hooks/useToken';
 
 
 export default function SignUp() {
+  const [errorShow, setErrorShow] = useState('');
   const { register,formState: { errors }, handleSubmit } = useForm();
   const {
     createUser, 
@@ -26,7 +27,7 @@ export default function SignUp() {
   }
   const handleSignUp = data => {
     console.log(data);
-    
+    setErrorShow('')
     createUser(data.email, data.password)
     .then(result=>{
       const user = result.user;
@@ -56,9 +57,13 @@ export default function SignUp() {
         // console.log(user)
       })
       .catch((error)=>{
-        console.log(error.message)
+        setErrorShow(error.message)
+        setLoading(false)
       })
             }})
+    }).catch(error=>{
+      setErrorShow(error.message)
+      setLoading(false)
     })
 }
 
@@ -79,7 +84,8 @@ export default function SignUp() {
       // console.log(data);
       // toast.success('Saved in database succesfully')
       setCreatedEmail(email)
-    }).catch(error=>console.log(error.message))
+    }).catch(error=>
+      setErrorShow(error.message))
   }
 
   
@@ -141,12 +147,11 @@ export default function SignUp() {
     </div>
       <input type="submit" value="Sign Up" className='btn btn-accent w-full' />
       </form>
-
+      {
+        errorShow && <p className='text-red-600'>{errorShow}</p>
+      }
       <p>Already have account <Link to='/login' className='text-primary'>Login Now</Link></p>
-      <div className="divider">OR</div>
-      <div className='flex justify-center'>
-      <button className='btn btn-accent btn-outline'>Continue with Google</button>
-      </div>
+      
       </div>
     </div>
   )
