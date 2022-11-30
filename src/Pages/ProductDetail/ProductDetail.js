@@ -14,7 +14,7 @@ export default function ProductDetail() {
    const {user} = useContext(AuthContext)
    const navigate= useNavigate();
     const [seller, setSeller] = useState({})
-    const {_id, productName, resalePrice, orginalPrice,sellerPhoto, description,sellerName,category, condition, image, postedTime, sellerEmail, usageYear} = loader;
+    const {_id, productName, resalePrice, orginalPrice,sellerPhoto, description,sellerName,category, condition,location, image, postedTime, sellerEmail, usageYear} = loader;
     const [isBuyer, isBuyerLoading] = useBuyer(user?.email)
     const describe = description?.split(',');
     const [verifyseller, setVerifyseller] = useState(null)
@@ -70,7 +70,7 @@ export default function ProductDetail() {
   <div className="hero-content flex-col lg:flex-row-reverse">
     <img src={image} className="max-w-sm rounded-lg shadow-2xl" />
     <div>
-      <h1 className="text-5xl font-bold my-5">{productName}</h1>
+      
        
       
         <div className='my-3 flex justify-start'>
@@ -92,6 +92,12 @@ export default function ProductDetail() {
         <h1>Posted:{postedTime}</h1>
         </div>
           </div>
+        </div>
+        <div className=''>
+        <h1>Condition: {condition}</h1>
+        </div>
+        <div className=''>
+        <h1>Location: {location}</h1>
         </div>
         <div className=''>
         <h1>Resale Price: {resalePrice} Tk</h1>

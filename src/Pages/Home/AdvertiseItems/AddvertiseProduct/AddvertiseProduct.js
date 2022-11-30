@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 export default function AddvertiseProduct({addvertisedProduct, users}) {
 //   const [categoryId, setCategoryId] = useState('');
   const [verifyseller, setVerifyseller] = useState(null)
-  const {productName, image, resalePrice, orginalPrice,sellerName, sellerEmail, category, _id } = addvertisedProduct;
+  const {productName, image, resalePrice, orginalPrice,sellerName, sellerEmail, category,condition, location, _id } = addvertisedProduct;
 
   useEffect(()=>{
     const s = users.find(user=>user.email === sellerEmail)
@@ -21,12 +21,13 @@ export default function AddvertiseProduct({addvertisedProduct, users}) {
   <div className="card-body">
     <h2 className="card-title text-center">{productName}</h2>
     <div>
+    <h1 className=''>Condition: {condition}</h1>
       {
         verifyseller && verifyseller?.verify ? <div className='flex justify-start items-center'>
-          <h1 className='text-center'>{sellerName}</h1>
+          <h1 className='text-center'>Seller: {sellerName}</h1>
           <GoVerified className='text-primary mt-1'></GoVerified>
         </div>:<div>
-          <h1 className=''>{sellerName}</h1>
+          <h1 className=''>Seller: {sellerName}</h1>
         </div>
       }
         <h1 className=''>Price: {resalePrice}Tk</h1>
