@@ -30,6 +30,7 @@ Daisy UI,
 Firebase (For authentication),
 React Packages, 
 Firebase Deploy,
+Stripe Payment
 
 ## Server Side used tools and libraries
 
