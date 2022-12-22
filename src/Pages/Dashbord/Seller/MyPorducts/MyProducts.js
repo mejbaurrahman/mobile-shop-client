@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthContext } from '../../../../Context/AuthProvider/AuthProvider';
 
 export default function MyProducts() {
@@ -84,7 +86,7 @@ export default function MyProducts() {
       <td>{product.postedTime}</td>
       <td>{product?.status === 'sold'? 'Sold': 'Available'}</td>
       <td><button onClick={()=>handleAdvertise(product.productName, product._id)} className='btn btn-primary' disabled={product?.status}>{product?.status? product?.status : 'Advertise'}</button></td>
-      <td><button onClick={()=>handleDelete(product._id)}  className='btn btn-error'>Delete</button></td>
+      <td><button onClick={()=>handleDelete(product._id)}  className='btn btn-error'><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></button></td>
     </tr>)
      }
     
